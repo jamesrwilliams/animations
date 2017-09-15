@@ -1,0 +1,111 @@
+section#phone-collapse {}
+
+.rotate-container {
+	
+	perspective: 1000px;
+	perspective-origin: 50% 50%;
+	margin: 0 50px;
+	max-width: 80%;
+	margin: 0 10%;
+	position: relative;
+	
+	#screens {
+		
+		width: 100%;
+		display: flex;
+		min-height: 900px;
+		padding: 25px 0;
+		position: relative;
+		align-items: center;
+		flex-direction: row;
+		justify-content: space-evenly;
+		transform: rotateX(0) rotateY(0) rotate(0) scale(1);
+		transition: all 1s ease-out;
+		-webkit-backface-visibility: hidden;
+		
+		&.active {
+			
+			transform: rotateX(25deg) rotateY(-25deg) rotate(28deg) translateX(-150px) scale(.8);
+			
+			#screen1 { left: 39.6%; transform: scale(1.1); }
+			#screen2 { left: 25%; }
+			#screen3 { left: 0; } 
+			#screen4 { left: 75%;  		} 
+			#screen5 { left: 100%; 		} 
+			
+			#screen1:before { opacity: 0; }
+			
+			.screen {
+				
+				opacity: 1;
+				box-shadow: 20px 20px 50px 0px rgba(0,0,0,0.2);
+				
+			}
+			
+			&:hover {
+				
+				.screen {
+					
+					box-shadow: 0 0 20px 0 rgab(0,0,0,0.2);
+					
+				}
+				
+				#screen1:before { transform: scale(1); }
+				
+			}
+			
+		}
+		
+		&:hover { 
+		
+			transform: rotateX(0) rotateY(0) rotate(0) scale(1);
+			
+			// #screen1 { transform: scale(1); }
+		
+		}
+	
+		.screen {
+			
+			display: block;
+			background: rgba(255,255,255,0.7);
+			position: absolute;
+			width: 225px;
+			height: 405px;
+			opacity: 0;
+			text-align: center;
+			color: white;
+			background-image: url('https://s3.eu-west-2.amazonaws.com/silveragency/temp/download.jpg');
+			background-size: contain;
+			-webkit-backface-visibility: hidden;
+			transform: translatex(-50%);
+			transition: all 1s ease;
+		
+		}
+		
+		#screen1 { z-index: 1000; opacity: 1; left: 50%; background-image: url('https://s3.eu-west-2.amazonaws.com/silveragency/bidfood/Mobile+Screen+01.jpg'); }
+		#screen2 { z-index: 750;  left: 50%; background-image: url('https://s3.eu-west-2.amazonaws.com/silveragency/bidfood/Mobile+Screen+02.jpg'); }
+		#screen3 { z-index: 200;  left: 50%; background-image: url('https://s3.eu-west-2.amazonaws.com/silveragency/bidfood/Mobile+Screen+03.jpg'); }
+		#screen4 { z-index: 750;  left: 50%; background-image: url('https://s3.eu-west-2.amazonaws.com/silveragency/bidfood/Mobile+Screen+04.jpg'); }
+		#screen5 { z-index: 200;  left: 50%; background-image: url('https://s3.eu-west-2.amazonaws.com/silveragency/bidfood/Mobile+Screen+05.jpg'); }
+		
+		#screen1:before {
+			z-index: -100;
+			content: "";
+			opacity: 1;
+			background-image: url('https://s3.eu-west-2.amazonaws.com/silveragency/temp/iphone_frame.png');
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size: 63%;
+			position: absolute;
+			top: -100px;
+			bottom: -100px;
+			right: -100px;
+			left: -100px;
+			opacity: 0;
+			transition: all 1s ease;
+
+		} // #screen1:before
+		
+	} // #secreens
+	
+}

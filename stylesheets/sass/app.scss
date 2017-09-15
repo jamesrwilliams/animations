@@ -1,0 +1,134 @@
+/* Project variables
+-------------------------------------------------------- */
+@import 'variables';
+
+/* Vendor imports
+-------------------------------------------------------- */
+@import 'vendor/bootstrap/bootstrap';
+@import 'vendor/font-awesome/font-awesome';
+@import 'partials/fonts';
+
+/* Typography
+-------------------------------------------------------- */
+body {
+	
+	-webkit-font-smoothing: antialiased; 
+	-moz-osx-font-smoothing: grayscale;
+
+	background: #F1F1F1;
+	
+}
+
+.serif {font-family: $font-family-serif;}
+.sans-serif {font-family: $font-family-sans-serif;}
+
+p {}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {}
+
+header {
+	
+	margin: 50px 0;
+	
+}
+
+main {
+	
+	section {
+		
+		position: relative;
+		background: white;
+		
+		.toolbar {
+			
+			width: 100%;
+			background: #F7F8F8;
+			margin: 0;
+			border-color: rgba(#444, 0.2);
+			border-style: solid;
+			border-width: 1px 0;
+			
+			p {
+				
+				font-style: italic;
+				
+			}
+						
+			ul {
+				
+				margin: 0 0 10px 0;
+				padding: 0;
+				list-style: none;
+				border-bottom: 1px solid rgba(#444, .1);
+				
+				&:after {
+					
+					content: "";
+					display: block;
+					clear: both;
+					
+				}
+				
+				li {
+					
+					float: left;
+					font-size: 18px;
+					padding: 10px 0;
+					margin-right: 10px;
+					font-weight: bold;
+					
+					a {
+					
+						background: white;
+						border: 1px solid rgba(#000,0.1);
+						padding: 5px 10px;
+						border-radius: 3px;
+						font-size: 14px;
+						font-weight: 100;
+						
+						&:hover,
+						&:active,
+						&:focus {
+						
+							text-decoration: none;
+						
+						}
+						
+					}
+					
+				} 
+				
+			}
+			
+		}
+		
+	}
+	
+}
+
+/* Partials
+-------------------------------------------------------- */
+@import 'partials/helpers';
+@import 'partials/header';
+
+@import 'animations/phone-collapse';
+
+
+/* Responsive breakpoints
+-------------------------------------------------------- */
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: $screen-sm-min) {}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: $screen-md-min) {}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: $screen-lg-min) {}

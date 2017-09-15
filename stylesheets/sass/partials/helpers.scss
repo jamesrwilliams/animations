@@ -1,0 +1,236 @@
+/* CSS3 bg cover IE support
+-------------------------------------------------------- */
+@mixin bg-cover($position: null) {
+	background-size: cover;
+	-ms-behavior: url('../../javascripts/vendor/bg-cover.htc');
+	@if $position != null {
+		background-position: $position;
+	}
+}
+
+/* CSS3 bg contain IE support
+-------------------------------------------------------- */
+@mixin bg-contain($position: null) {
+	background-size: contain;
+	-ms-behavior: url('../../javascripts/vendor/bg-cover.htc');
+	@if $position != null {
+		background-position: $position;
+	}
+}
+
+/* Position abolsute, fill parent element
+-------------------------------------------------------- */
+@mixin position-abs {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+/* Height hack (e.g. headers)
+-------------------------------------------------------- */
+@mixin height-hack {
+	&, * {
+		height: 0;
+	}
+	.keep-height {
+		&, * {
+			height: auto;
+		}
+	}
+}
+@mixin height-hack-undo {
+	&, * {
+		height: auto;
+	}
+}
+
+/* Easily generate an overlay on an element
+-------------------------------------------------------- */
+@mixin dom-overlay($opacity: 0.1, $zindex: none, $color: #000) {
+	&:before {
+		content: '';
+		display: block;
+		@include position-abs;
+		background: rgba($color, $opacity);
+
+		@if $zindex != none {
+			z-index: $zindex;
+		}
+	}
+}
+
+/* CSS blur with IE support
+-------------------------------------------------------- */
+@mixin blur($amount: 30) {
+	filter: blur(#{$amount}px);
+	filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius = '#{$amount}'); 
+}
+
+/* Generate a keylined version of a bootstrap button
+-------------------------------------------------------- */
+/*
+.btn-default {
+	@include button-keyline($btn-default-bg);
+}
+
+.btn-primary {
+	@include button-keyline($btn-primary-bg);
+}
+
+.btn-success {
+	@include button-keyline($btn-success-bg);
+}
+
+.btn-info {
+	@include button-keyline($btn-info-bg);
+}
+
+.btn-warning {
+	@include button-keyline($btn-warning-bg);
+}
+
+.btn-danger {
+	@include button-keyline($btn-danger-bg);
+}
+*/
+@mixin button-keyline($background) {
+
+	// Keyline buttons
+	&.btn-keyline {
+		color: $background;
+		background-color: transparent;
+		border-color: $background;
+		
+		&:focus,
+		&.focus {
+			color: darken($background, 25%);
+			background-color: transparent;
+			border-color: darken($background, 25%);
+		}
+
+		&:hover {
+			color: darken($background, 12%);
+			background-color: transparent;
+			border-color: darken($background, 12%);
+		}
+
+		&:active,
+		&.active,
+		.open > &.dropdown-toggle {
+			color: darken($background, 12%);
+			background-color: transparent;
+			border-color: darken($background, 12%);
+
+			&:hover,
+			&:focus,
+			&.focus {
+				color: darken($background, 25%);
+				background-color: transparent;
+				border-color: darken($background, 25%);
+			}
+		}
+		
+		&:active,
+		&.active,
+		.open > &.dropdown-toggle {
+			background-image: none;
+		}
+
+		&.disabled,
+		&[disabled],
+		fieldset[disabled] & {
+			&:hover,
+			&:focus,
+			&.focus {
+			color: $background;
+			border-color: $background;
+			}
+		}
+	}
+
+}
+
+/* Vertical align
+-------------------------------------------------------- */
+@mixin gen-va() {
+	@include position-abs;
+	> .middle {
+		position: relative;
+		top: 50%;
+		transform: translate(0, -50%);
+	}
+}
+.vertical-align {
+	@include gen-va;
+}
+
+@media (min-width: $screen-sm-min) {
+	.vertical-align-sm {
+		@include gen-va;
+	}
+}
+
+@media (min-width: $screen-md-min) {
+	.vertical-align-md {
+		@include gen-va;
+	}
+}
+
+@media (min-width: $screen-lg-min) {
+	.vertical-align-lg {
+		@include gen-va;
+	}
+}
+
+
+/* Remove WYSIWYG spacing
+-------------------------------------------------------- */
+.wp-content {
+	& > :first-child {
+		margin-top: 0;
+	}
+	& > :last-child {
+		margin-bottom: 0;
+	}
+}
+
+/* Remove padding on bootstrap columns
+-------------------------------------------------------- */
+.no-padding {
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+.no-padding-left {
+	padding-left: 0 !important;
+}
+.no-padding-right {
+	padding-right: 0 !important;
+}
+
+/* Extra small devices (phones, 0 and up) */
+.no-xs-padding {padding-left: 0; padding-right: 0;}
+.no-xs-padding-left {padding-left: 0;}
+.no-xs-padding-right {padding-right: 0;}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: $screen-sm-min) {
+	.no-sm-padding {padding-left: 0; padding-right: 0;}
+	.no-sm-padding-left {padding-left: 0;}
+	.no-sm-padding-right {padding-right: 0;}
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: $screen-md-min) {
+	.no-md-padding {padding-left: 0; padding-right: 0;}
+	.no-md-padding-left {padding-left: 0;}
+	.no-md-padding-right {padding-right: 0;}
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: $screen-lg-min) {
+	.no-lg-padding {padding-left: 0; padding-right: 0;}
+	.no-lg-padding-left {padding-left: 0;}
+	.no-lg-padding-right {padding-right: 0;}
+}
