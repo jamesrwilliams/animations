@@ -1,7 +1,9 @@
 (function($) {
 	'use strict';
 	
-	$("#activate").on('click', function(){
+	$("#activate").on('click', function(e){
+		
+		e.preventDefault();
 		
 		$("#screens").toggleClass('active');
 		
